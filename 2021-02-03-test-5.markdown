@@ -1,0 +1,43 @@
+---
+# Layout
+layout: default-template
+title:  "Test-5"
+date:   2021-01-20 22:22:20 -0600
+categories: front-end
+author: laurent_duchaussoy
+excerpt_separator: <!--END_SUMMARY-->
+---
+Voici un petit résumé de mon superbe article.
+<!--END_SUMMARY-->
+Jekyll also offers powerful support for code snippets:
+
+```ruby
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+```
+
+```js
+function(toto){
+  alert('toto');
+  // je suis un commentaire
+}
+```
+
+Here is some text containing a footnote.[^somesamplefootnote]
+
+[link](#link-to-me)
+
+```html
+<table>
+    <tr>
+        <td>Single cell HTML table</td>
+    </tr>
+</table>
+
+<table><tr><td>Single cell HTML table</td></tr></table>
+
+<h2 id="my-header"><a class="anchor" href="#my-header"><span class="octicon octicon-link"></span></a>My Header</h2>
+```
