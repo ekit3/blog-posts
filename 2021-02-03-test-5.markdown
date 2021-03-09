@@ -11,10 +11,11 @@ Voici un petit résumé de mon superbe article.
 
 ![image](assets/gitmoji.png)
 
-![image](assets/article-5/art.png)
-
 <!--END_SUMMARY-->
 Jekyll also offers powerful support for code snippets:
+
+![image](assets/article-5/art.png)
+
 
 ```ruby
 def print_hi(name)
