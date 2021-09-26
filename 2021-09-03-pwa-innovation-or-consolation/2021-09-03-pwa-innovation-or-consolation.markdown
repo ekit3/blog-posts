@@ -7,7 +7,7 @@ author: romain_vermeeren
 excerpt_separator: <!--END_SUMMARY-->
 ---
 
-![image](/assets/pwa/pwa-dbz-img.jpg)
+![image](pwa-dbz-img.jpg)
 
 Le terme PWA est entré depuis quelques années dans le long répertoire des acronymes liés au numérique.
 Mais qu’est ce qu’une `Progressive Web App` ? Vu par certains comme la promesse d’une expérience mobile responsive boosté par les fonctionnalités de votre téléphone, elle serait facile à mettre en place, de faible coût et n'aurait plus rien à envier aux applications natives.
@@ -15,7 +15,7 @@ Afin de vous éclairer sur le sujet et vous permettre de vous faire votre propre
 
 <!--END_SUMMARY-->
 
-![image](/assets/pwa/pwa-logo.png)
+![image](pwa-logo.png)
 
 ##### Mais d’où ça vient ?
 
@@ -119,7 +119,7 @@ Le développement des PWA s’est vû grandement facilité par HTML5 qui propose
 Permettant, entre autres, l’utilisation de fonctionnalités de géolocalisation, push, status de la batterie, presse papier, orientation de l’écran, les vibrations du mobile etc.
 Vous pouvez retrouver la liste de ces fonctionnalités détaillées sur ce [site](https://whatwebcando.today/){:target="_blank"}. 
 
-![image](/assets/pwa/pwa-lighthouse.png)
+![image](pwa-lighthouse.png)
 
 Ci-après la liste des caractéristiques officielles que vous pouvez retrouver dans Lighthouse afin d’évaluer la performance de vos applications.
 Lighthouse est un plugin Chrome permettant d’auditer votre site web qui vous donnera son niveau de compatibilité avec la PWA.
