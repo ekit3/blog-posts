@@ -7,10 +7,6 @@ author: [yoann_bouquet]
 excerpt_separator: <!--END_SUMMARY-->
 ---
 
-# Mutation testing
-
-## Définition
-
 Le mutation testing a été inventé en 1971 par Richard Lipton.
 Sa réflexion est venue suite à des expériences de projets où les programmeurs devaient consacrer le moins de temps possible aux tests.
 Le programmeur devait se contenter de tester intelligemment à moindre coût.
