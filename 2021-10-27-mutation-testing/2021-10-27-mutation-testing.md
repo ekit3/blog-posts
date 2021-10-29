@@ -63,17 +63,50 @@ Exemple de mutations possibles et de code métier associés
 * `=` → `!=`
 * `==` → `>=`
 
-
 La phase de génération consiste à parcourir le code métier et à déterminer les mutations possibles. Dès qu’une mutation est applicable alors elle générera un nouveau “mutant”.
 
 Le processus de génération des mutants peut être gourmand en ressources car le nombre de mutants peut varier en fonction de la complexité du code métier (il y a quelques années c’était encore un frein à l’utilisation de ce concept). 
 Il existe des frameworks permettant de générer des mutants de façon “automatique” tel que Pitest pour Java.
 
-![Une simple classe d'addition](./add-class.png)
+Voici par exemple une simple classe qui réalise une addition:
 
-![La classe d'addition mutée (un + transformé en -)](./add-class-mutation1.png)
+```java
+package com.business;
 
-![La classe d'addition mutée (un return 0)](./add-class-mutation2.png)
+public class Add {
+    
+    public int addNumber(int a, int b){
+        return a + b;
+    }
+
+}
+```
+
+Et voici deux mutants possibles:
+
+```java
+package com.business;
+
+public class AddMutation1 {
+    
+    public int addNumber(int a, int b){
+        return a - b;
+    }
+
+}
+```
+
+```java
+package com.business;
+
+public class AddMutation2 {
+    
+    public int addNumber(int a, int b){
+        return 0;
+    }
+
+}
+```
 
 ## Processus de tests
 
@@ -96,7 +129,18 @@ Pitest a créé deux mutants (mis en exemple précédemment) qui sont toujours e
 
 Pour l’exemple, nous avons un test unitaire qui ne couvre pas entièrement la méthode testée.
 
-![un test unitaire](./test-add-positive.png)
+```java
+@Test
+public final void testAddPositive(){
+    Add myAddTest = new Add();
+    int a = 1;
+    int b = 3;
+
+    if(myAddTest.addNumber(a,b) < 0){
+        fail("a et b sont positifs, le résultat attendu devrait être positif");
+    }
+}
+```
 
 Le résultat du mutation testing est le suivant : 
 
@@ -106,7 +150,17 @@ Le mutation testing révèle que les tests unitaires ne sont pas suffisamment co
 
 Le mutant encore debout est :
 
-![La classe d'addition mutée (un return 0)](./add-class-mutation2.png)
+```java
+package com.business;
+
+public class AddMutation2 {
+    
+    public int addNumber(int a, int b){
+        return 0;
+    }
+
+}
+```
 
 Pour cela, il faut analyser le rapport que Pitest donne et appliquer un correctif sur le test unitaire pour tuer le mutant au prochain lancement de Pitest.
 
@@ -114,7 +168,19 @@ Pour cela, il faut analyser le rapport que Pitest donne et appliquer un correcti
 
 Suite au renfort du test unitaire, Pitest indique que les tests sont bons et que tous les mutants ont été tués.
 
-![Le test renforcé](./test-renforce.png)
+```java
+@Test
+public final void testAddResult(){
+    Add myAddTest = new Add();
+    int a = 2;
+    int b = 0;
+    int expectedResult = a+b;
+
+    if(myAddTest.addNumber(a,b) != expectedResult){
+        fail("aLe résultat est différent");
+    }
+}
+```
 
 ![Le résultat de pitest avec le test renforcé](./pitest-result-test-renforce.png)
 
@@ -132,19 +198,54 @@ Schéma d’explication du framework :
 
 Le but de ce programme est de calculer l’aire d’un rectangle.
 
-![Méthode de calcul d'une aire de rectangle](./method-calc-rectangle.png)
+```java
+class RectangleArea {
+    public int calcRectangleArea(int length, int width){
+        return length * width;
+    }
+}
+```
+On peut vérifier avec un test si l’aire du rectangle n’est pas égale à 0.
 
-On se doit de vérifier si l’aire du rectangle n’est pas égale à 0.
+```java
+@Test
+public void testRectangleArea(){
+    RectangleArea area = new RectangleArea();
+    int a = 3;
+    int b = 2;
+    if ( area.calcRectangleeArea(a,b) < 0){
+        fail("L'aire doit être supérieure à 0");
+    }
+}
+```
 
-![Test de la méthode d'aire du rectangle](./test-rectangle-area.png)
+On pourrait ajouter une règle de gestion à notre premier code, avec une interprétation supplémentaire : “Un carré n’est pas un rectangle”.
 
-Une interprétation supplémentaire peut être apportée au code : “Un carré n’est pas un rectangle”.
-
-![Méthode de calcul d'une aire de rectangle modifiée](./method-calc-rectangle-2.png)
+```java
+class RectangleArea {
+    public int calcRectangleArea(int length, int width){
+        if(length != width){
+            return length * width;
+        }
+        // on retourne 0 pour les carrés
+        return 0;
+    }
+}
+```
 
 Suite au changement de code un test est ajouté afin de tester un carré dont les côtés valent 0.
 
-![Test que l'objet n'est pas un carré](./test-square-area.png)
+```java
+@Test
+public void testSquareArea(){
+    RectangleArea area = new RectangleArea();
+    int a = 0;
+    int b = 0;
+    if ( area.calcRectangleeArea(a,b) != 0){
+        fail("0 attendu, car nous sommes dans un carré");
+    }
+}
+```
 
 Dans les deux cas, Pitest remonte une couverture sur le mutation testing de 0%.
 
@@ -168,14 +269,6 @@ La commande `mvn test` s’exécute approximativement en 20 secondes.
 
 On peut exécuter pitest sur un projet Maven en tapant directement la commande : `mvn org.pitest:pitest-maven:mutationCoverage`
 
-![](./petclinic-pitest.png)
-
-Il est nécessaire d’intégrer un plugin pour le support de Junit 5 (par défaut, PiTest ne supporte que JUnit 4). Le message n’est d’ailleurs pas très précis.
-Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest
-
-![](./petclinic-maven.png)
-
-
 ```
 ================================================================================
 - Statistics
@@ -188,11 +281,13 @@ Cela impose (malheureusement) de modifier le pom.xml pour y rajouter PiTest
 
 Le temps d’exécution est d’un peu plus de 2 minutes.
 
-## Quel indicateur mutation testing ?
+## Quels indicateurs fournit le mutation testing ?
 
-Pitest fournit un taux de force par rapport au mutation testing. 
+Pitest calcule un taux de force des tests (Test strength) par rapport au mutation testing. 
 
-![](./petclinic-pitest-result.png)
+```
+>> Mutations with no coverage 8. Test strength 72%
+```
 
 Ce taux peut être utilisé avec le % de couverture de code dans les équipes comme indicateur de qualité sur les premiers niveaux de tests.
 
@@ -245,18 +340,18 @@ Peut-on automatiser la lecture des rapports et en ressortir les problèmes les p
 
 ## Ressources / Bibliographie :
 
-* Papier de Google : https://research.google/pubs/pub46584/ State of Mutation Testing at Google (PDF)
+* Papier de Google : [State of Mutation Testing at Google (PDF)](https://research.google/pubs/pub46584/). Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
+  * une mutation max par ligne de code étudiée (pour limiter la complexité de la review)
+  * le code “aride” n’est pas muté (caches, System.out.println, code de logging => if debug, log.debug() ))
+  * les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i < 10 ou for i != 10) ne sont pas testées
+  * ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions
 
-Ce papier décrit comment Google utilise les tests de mutation dans le process de code review, pour maximiser la pertinence des mutants :
-une mutation max par ligne de code étudiée (pour limiter la complexité de la review)
-le code “aride” n’est pas muté (caches, System.out.println, code de logging => if debug, log.debug() ))
-les mutations qui rendraient le code équivalent (supprimer un cache/memoization, for i < 10 ou for i != 10) ne sont pas testées
-ils ne testent pas non plus les mutations sur le code qui pourrait être généré (equals/hashCode/toString) et les messages d’exceptions
+* [Blog de PiTest](https://blog.pitest.org/)
 
-* Blog de PiTest : https://blog.pitest.org/  
+* [Site de PiTest](https://pitest.org/)
 
-* PiTest : https://pitest.org/ 
+* [awesome mutation testing](https://github.com/theofidry/awesome-mutation-testing) : Une compilation des meilleures ressources sur le mutation testing
 
-* https://github.com/theofidry/awesome-mutation-testing Hints on Test Data Selection: Help for the Practicing Programmer de Richard A. Demillo et R.J Lipton
+* Hints on Test Data Selection: Help for the Practicing Programmer, de Richard A. Demillo et R.J Lipton
 
 
