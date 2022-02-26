@@ -2,7 +2,7 @@
 layout: default-template
 title:  "Eco Conception"
 date:   2022-02-02 9:00:00 +0200
-categories: Green IT
+categories: Green-IT
 author: [pauline_vandame, romain_vermeeren, mehdi_kheir]
 excerpt_separator: <!--END_SUMMARY-->
 ---
