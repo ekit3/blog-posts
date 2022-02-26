@@ -2,7 +2,7 @@
 layout: default-template
 title:  "Mutation testing"
 date:   2021-10-27 9:00:00 +0200
-categories: testing
+categories: Testing
 author: [yoann_bouquet]
 excerpt_separator: <!--END_SUMMARY-->
 ---

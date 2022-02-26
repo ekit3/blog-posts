@@ -2,8 +2,8 @@
 layout: default-template
 title:  "PWA : Innovation ou solution de consolation ?"
 date:   2021-09-29 9:00:00 +0200
-categories: front-end
-author: [romain_vermeeren, laurent_duchaussoy, yohann_gueguin]
+categories: Front-End
+author: [romain_vermeeren, yohann_gueguin, laurent_duchaussoy]
 excerpt_separator: <!--END_SUMMARY-->
 ---
 
