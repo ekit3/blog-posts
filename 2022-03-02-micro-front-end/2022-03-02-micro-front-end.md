@@ -1,6 +1,6 @@
 ---
 layout: default-template
-title:  "Micro Frond End"
+title:  "Micro Front End"
 date:   2022-03-02 9:00:00 +0200
 categories: Front-End
 author: [yohann_gueguin, florian_barbet, laurent_duchaussoy]
