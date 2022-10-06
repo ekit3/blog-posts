@@ -87,7 +87,7 @@ Représente un module associé ainsi que ses états (la mémoire, la table ainsi
 
 Comme expliqué en introduction, WASM permet un haut niveau de performances impossible en Javascript. Ces performances ouvrent la possibilité d’implémenter de nouveaux cas d’usage. Certains de ces cas d’usage sont concrets et déjà mis en place dans certaines applications et jeux. D’autres cas d’usage sont plutôt de l’ordre du POC (Proof Of Concept) ou de la démo : <br/>
 * Server-side rendering
-* OCI (Open Container Initiative) *
+* OCI (Open Container Initiative)
 * 3D Web View Rendering
 * Étendre des fonctions JS 
 * Extensions navigateurs (ublock origin)
@@ -126,7 +126,7 @@ Malgré une adoption encore faible, il n’en reste pas moins fiable que ce soit
 * <b><a name="bytecode">bytecode:</a></b> En informatique, le bytecode (terme anglais signifiant « code en bytes ») est un code intermédiaire entre les instructions machines et le code source, qui n'est pas directement exécutable. Le bytecode (également appelé code portable ou p-code) peut être créé à la volée et résider en mémoire (compilation à la volée, JIT en anglais) ou bien résider dans un fichier, généralement binaire qui représente le programme, tout comme un fichier de code objet produit par un compilateur.
 [Source](https://fr.wikipedia.org/wiki/Bytecode)
 
-* <b><a name="syntaxeTree">Arbre de syntaxe abstraite:<a></b> Un arbre de syntaxe abstraite (AST) est une manière de représenter la syntaxe d'un langage de programmation sous la forme d'une structure arborescente hiérarchique. Cette structure est utilisée pour générer des tables de symboles pour les compilateurs et la génération de code ultérieure. L'arbre représente toutes les constructions du langage et leurs règles ultérieures.
+* <b><a name="syntaxeTree">Arbre de syntaxe abstraite:</a></b> Un arbre de syntaxe abstraite (AST) est une manière de représenter la syntaxe d'un langage de programmation sous la forme d'une structure arborescente hiérarchique. Cette structure est utilisée pour générer des tables de symboles pour les compilateurs et la génération de code ultérieure. L'arbre représente toutes les constructions du langage et leurs règles ultérieures.
 [Source](https://definir-tech.com/arbre-de-syntaxe-abstraite-ast/)
 
 * <b><a name="llvm">LLVM:</a></b> LLVM (anciennement appelé Low Level Virtual Machine en français : « machine virtuelle de bas niveau ») est une infrastructure de compilateur conçue pour l'optimisation du code à la compilation, à l'édition de liens, voire à l'exécution ou durant les « temps morts » d'un programme, quel que soit le langage d'origine.
@@ -145,11 +145,7 @@ The state of WebAssembly (2022)
 * [https://developer.mozilla.org/fr/docs/](https://developer.mozilla.org/fr/docs/)
 * [https://jenkov.com/tutorials/java-concurrency/java-memory-model.html](https://jenkov.com/tutorials/java-concurrency/java-memory-model.html)
 * [Angry Bots Démo](https://www.youtube.com/watch?v=hSeB9I_mK6A&t=4s)
-
-Pour aller plus loin :
-3 Big Projects That Are Already Embracing WebAssembly
-focus à faire sur extension navigateur ublock et son bench
-* [lien discord](https://discord.gg/3B8QFXkYTc)
+* [lien discord Wasm](https://discord.gg/3B8QFXkYTc)
 * [Applications faite en WASM](https://madewithwebassembly.com/)
 * [OCI (Open Container Initiative)](https://radu-matei.com/blog/wasm-to-oci/)
 * [schéma mémoire linéaire de Meghalee Goswami](https://study.com/academy/lesson/what-is-the-linear-memory-model-definition-constraints.html)
