@@ -3,7 +3,7 @@ layout: default-template
 title: Créer un site web de documentation statique avec MkDocs
 date: 2023-04-27 9:00:00 +0100
 language: fr
-categories: docs
+categories: Common
 author: [julien_wittouck]
 tags: git tools docs
 excerpt_separator: <!--END_SUMMARY-->
